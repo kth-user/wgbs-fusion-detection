@@ -7,7 +7,7 @@
 #################################################################################################
 
 ### Configure global arguments
-#GRCH37=/path/to/Homo_sapiens.GRCh37.dna.primary_assembly.fa
+# Edit these paths before use
 GRCH37=/path/to/hg19_pUC19_lambda.fa # pUC19 and lambda merged hg19 genome
 PYTHON=/path/to/python # Python 3.9.5
 GATK=/path/to/gatk # GATK 4.0.5.1

@@ -1,5 +1,14 @@
 #$ -S /bin/bash
 
+# path setting
+# Edit these paths before use
+PYTHON=/path/to/python3
+SAMTOOLS=/path/to/samtools
+INTERSECT_PY=/path/to/pycode/intersect.py
+FILTER_ID_PY=/path/to/pycode/filter_bam_by_id.py
+MATCHED_LEN_PY=/path/to/pycode/calc_matched_len_cigar.py
+GET_FIRST_CIGAR_PY=/path/to/pycode/get_first_cigar.py
+
 # argument setting
 input_bam=$1
 out_dir=$2
@@ -32,14 +41,6 @@ echo "#######################################################################"
 output_base_name=$(basename $input_bam .bam)
 output_A=${out_dir}"/"${output_base_name}_${gene_A_name}.bam
 output_B=${out_dir}"/"${output_base_name}_${gene_B_name}.bam
-
-# path setting
-PYTHON=/path/to/python3
-SAMTOOLS=/path/to/samtools
-INTERSECT_PY=/path/to/pycode/intersect.py
-FILTER_ID_PY=/path/to/pycode/filter_bam_by_id.py
-MATCHED_LEN_PY=/path/to/pycode/calc_matched_len_cigar.py
-GET_FIRST_CIGAR_PY=/path/to/pycode/get_first_cigar.py
 
 # output
 summary=${out_dir}"/"summary.txt
@@ -180,8 +181,8 @@ for read_id in $(cat ${out_dir}"/"${output_base_name}_${fusion_name}_split.ids);
 	sa_strand=$(echo $sa_tag | cut -d, -f3)
 	sa_cigar=$(echo $sa_tag | cut -d, -f4)
 
-	echo "Debug: chr=$chr, pos=$pos, flag=$flag"
-    echo "Debug: sa_chr=$sa_chr, sa_pos=$sa_pos, sa_strand=$sa_strand"
+    #echo "Debug: chr=$chr, pos=$pos, flag=$flag"
+    #echo "Debug: sa_chr=$sa_chr, sa_pos=$sa_pos, sa_strand=$sa_strand"
 
 	if (( (flag & 16) == 0 )); then
 	  strand="+"
@@ -192,15 +193,15 @@ for read_id in $(cat ${out_dir}"/"${output_base_name}_${fusion_name}_split.ids);
     # count matched length (M,D,X,N,=)
 	matched_length=$($PYTHON $MATCHED_LEN_PY "$cigar")
 	sa_matched_length=$($PYTHON $MATCHED_LEN_PY "$sa_cigar")
-    echo "Debug: matched_length=$matched_length, sa_matched_length=$sa_matched_length"
+    #echo "Debug: matched_length=$matched_length, sa_matched_length=$sa_matched_length"
 	# get first cigar (S:SH, M:MDXN=, ignore IP)
 	first_cigar=$($PYTHON $GET_FIRST_CIGAR_PY "$cigar")
 	sa_first_cigar=$($PYTHON $GET_FIRST_CIGAR_PY "$sa_cigar")
-    echo "Debug: first_cigar=$first_cigar, sa_first_cigar=$sa_first_cigar"
+    #echo "Debug: first_cigar=$first_cigar, sa_first_cigar=$sa_first_cigar"
 	# end coordinates
 	end_pos=$((pos + matched_length - 1))
 	sa_end_pos=$((sa_pos + sa_matched_length - 1))
-	echo "Debug: end_pos=$end_pos, sa_end_pos=$sa_end_pos"
+    #echo "Debug: end_pos=$end_pos, sa_end_pos=$sa_end_pos"
 
 	if [ "$strand" = "+" ]; then
 	  if [ "$first_cigar" = "S" ]; then

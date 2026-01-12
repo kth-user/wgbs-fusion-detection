@@ -230,7 +230,7 @@ for read_id in $(cat ${out_dir}"/"${output_base_name}_${fusion_name}_split.ids);
 	  fi
 	fi
 								        
-	# 결과 출력
+	# Print result
 	echo -e "${fusion_name}\t${read_id}\t${chr}\t${breakpoint_pos}\t${sa_chr}\t${sa_breakpoint_pos}" >> $breakpoint_output
   fi
 done

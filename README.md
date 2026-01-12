@@ -51,10 +51,7 @@ bash wgs_mapping.sh sample01 sample01_R1.fq.gz sample01_R2.fq.gz \
 
 ### 2. Fusion Detection
 ```bash
-bash target_fusion_call.sh   \
-        \
-        \
-
+bash target_fusion_call.sh  
 ```
 
 **Arguments:**

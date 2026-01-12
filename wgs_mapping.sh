@@ -7,6 +7,7 @@
 #################################################################################################
 
 ### Configure global arguments
+# Edit these paths before use
 GRCH37=/path/to/Homo_sapiens.GRCh37.dna.primary_assembly.fa
 PYTHON=/path/to/python # Python 3.9.5 
 GATK=/path/to/gatk # GATK 4.0.5.1

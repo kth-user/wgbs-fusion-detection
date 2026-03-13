@@ -81,7 +81,7 @@ bash target_fusion_call.sh sample01.bam ./fusion_output \
 ## Pipeline Overview
 
 1. **Mapping**: Align sequencing reads to reference genome
-   - WGBS: Bismark-based bisulfite-aware alignment
+   - WGBS: BWA-meth-based bisulfite-aware alignment
    - WGS: BWA-based standard alignment
 
 2. **Fusion Detection**: Identify fusion junction reads spanning two genes

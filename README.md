@@ -82,7 +82,7 @@ bash target_fusion_call.sh sample01.bam ./fusion_output \
 
 1. **Mapping**: Align sequencing reads to reference genome
    - WGBS: BWA-meth-based bisulfite-aware alignment
-   - WGS: BWA-based standard alignment
+   - WGS: BWA-based alignment
 
 2. **Fusion Detection**: Identify fusion junction reads spanning two genes
    - Extract reads mapping to target gene regions

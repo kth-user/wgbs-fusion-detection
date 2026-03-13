@@ -55,7 +55,7 @@ bash target_fusion_call.sh
 ```
 
 **Arguments:**
-- `input_bam`: Path to mapped BAM file
+- `input_bam`: Path to BAM file
 - `output_dir`: Output directory for fusion call results
 - `geneA_name`: Gene A symbol
 - `geneA_chr`: Gene A chromosome (e.g., chr9)
@@ -84,7 +84,7 @@ bash target_fusion_call.sh sample01.bam ./fusion_output \
    - WGBS: BWA-meth-based bisulfite-aware alignment
    - WGS: BWA-based alignment
 
-2. **Fusion Detection**: Identify fusion junction reads spanning two genes
+2. **Fusion Detection**: Identify fusion reads spanning two genes
    - Extract reads mapping to target gene regions
    - Identify split and discordant read pairs
    - Call fusion breakpoints
